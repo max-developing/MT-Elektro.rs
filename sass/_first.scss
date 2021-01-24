@@ -1,0 +1,225 @@
+.first {
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to top right,
+        rgba(0,0,0,.6),
+        rgba(0,0,0,.6)),
+        url(../img/hero-mobile.jpg);
+    background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid var(--color-dark-blue);
+    
+    @media only screen and (min-width: $mw-tablet-l){
+        background-image: linear-gradient(to top right,
+        rgba(0,0,0,.7),
+        rgba(0,0,0,.7)),
+        url(../img/herofinal.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    &:last-child{
+        margin-right: 10rem;
+    }
+
+    @media only screen and (min-width: $mw-phone){
+        margin-left: 10rem;
+        margin-right: 10rem;
+    }
+
+    @media only screen and (min-width: $mw-tablet-p){
+        justify-content: space-around;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    @media only screen and (min-width: $mw-tablet-l){
+        justify-content: flex-end;
+        margin-right: 5rem;
+    }
+
+    &--link:link, &--link:visited,
+    &--link:hover, &--link:active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: var(--margin-small);
+        text-decoration: none;
+
+        &:not(:first-child){
+            margin-left: var(--margin-smallest);
+        }
+
+        &:not(:last-child){
+            margin-right: var(--margin-smallest);
+        }
+    }
+
+    &--icon {
+        width: 3rem;
+        height: 3rem;
+    
+        &-phone {
+            fill: var(--color-f4);
+        }
+    }
+
+    &--text {
+        font-weight: var(--fw-strong);
+        font-size: var(--fs-strong);
+        color: var(--color-white);
+        padding-top: var(--padding-small);
+        text-align: center;
+
+        @media only screen and (min-width: $mw-tablet-p){
+            font-size: var(--fs-small);
+        }
+    }
+}
+
+.logo {
+    width: 25rem;
+    height: 25rem;
+    position: absolute;
+    top: 3%;
+    left: 6%;
+    display: none;
+
+    @media only screen and (min-width: $mw-tablet-l){
+        display: block;
+    }
+
+    &--img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}    
+
+
+.showcase {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &--logo {
+        width: 20rem;
+        height: 20rem;
+        opacity: 0.8;
+        
+
+        @media only screen and (min-width: $mw-phone){
+            width: 30rem;
+            height: 30rem;
+        }
+
+        @media only screen and (min-width: $mw-tablet-l){
+            display: none;
+        }
+    }
+
+    &--img {
+        display: block;
+        width: 100%;
+        height: 100%;   
+    }
+
+    &--text {
+        width: 30rem;
+        text-align: center;
+        margin-top: var(--margin-small);
+        color: var(--color-white);
+        font-weight: 200;
+        font-size: var(--fs-headlines);
+
+        &-s:link, &-s:visited {
+            display: none;
+            font-size: var(--fs-bodytext);
+            text-decoration: none;
+            color: var(--color-white);
+            opacity: .7;
+            transition: all .3s;
+        }
+
+        @media only screen and (min-width: $mw-tablet-p){
+            // font-size: var(--fs-largest);
+            width: 40rem;
+
+            &-s:link, &-s:visited {
+                display: inline-block;
+            }
+            &-s:hover, &-s:active {
+                opacity: 1;
+                transform: skewY(-5deg);
+                font-size: 101%;
+            }
+        }
+    }
+
+    &--btn {
+        display: flex;
+        position: relative;
+
+        text-decoration: none;
+        color: var(--color-white);
+        margin-top: var(--margin-medium);
+
+        &-text {
+            font-size: var(--fs-small);
+
+            animation: blinking 2s infinite 0.5s;
+
+            @media only screen and (min-width: $mw-tablet-p){
+                // font-size: var(--fs-medium);
+            }
+        }
+
+        &-icon {
+            position: absolute;
+            top: -.3rem;
+            right: -1.7rem;
+            fill: currentColor;
+            width: 2rem;
+            height: 2rem;
+
+            animation: blinking 2s infinite 1.5s;
+
+            &2 {
+                z-index: 1;
+                top: 1rem;
+                right: -1.7rem;
+                animation: blinking 2s infinite 2s;
+            }
+
+            &3 {
+                top: 2.2rem;
+                right: -1.7rem;
+                animation: blinking 2s infinite 2.5s;
+            }
+            @media only screen and (min-width: $mw-tablet-p){
+                top: .5rem;
+                &2 { top: 1.5rem;}
+                &3 { top: 2.5rem;}
+            }
+        
+        }
+    }
+
+}
+
+@keyframes blinking {
+    0% { opacity: 1;}
+    50% { opacity: 0.2;}
+    100% { opacity: 1;}
+}
