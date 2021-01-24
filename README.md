@@ -9,3 +9,7 @@ The main goal was to keep everything simple and effective. Without almost any an
 
 This is the recreated site after finishing my second course on Udemy.
 Link to the course: https://www.udemy.com/course/advanced-css-and-sass/ by Jonas Schmedtmann
+
+
+Also, I haven't learned php yet, so the mail form is not perfect (not yet) 😁  
+Currently, I'm learning javaScript, and I confess that i made a (currently good working) mess in this script.js file..
