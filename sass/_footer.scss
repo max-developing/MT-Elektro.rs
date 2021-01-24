@@ -104,10 +104,9 @@
 @media only screen and (min-width: $mw-tablet-l){
     .copy--link:link, &--link:visited {
         opacity: 0.8;
-        transition: all .3s;
+        transition: opacity .3s;
     }
     .copy--link:hover, &--link:active {
-        transform: scale(1.1);
         opacity: 1;
     }
 }
