@@ -1,225 +1,412 @@
 .first {
-    height: 100vh;
-    width: 100vw;
-    background-image: linear-gradient(to top right,
-        rgba(0,0,0,.6),
-        rgba(0,0,0,.6)),
-        url(../img/hero-mobile.jpg);
-    background-size: cover;
-    background-position: center;
-    border-bottom: 2px solid var(--color-dark-blue);
-    
-    @media only screen and (min-width: $mw-tablet-l){
-        background-image: linear-gradient(to top right,
-        rgba(0,0,0,.7),
-        rgba(0,0,0,.7)),
-        url(../img/herofinal.jpg);
-        background-size: cover;
-        background-position: center;
-    }
+  display: grid;
+  grid-template-rows: 40vh 50vh 10vh;
+  grid-template-columns: 25% 25% 50%;
+  justify-items: start;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(../img/herofinal.jpg);
+  background-size: cover;
+  background-position: center;
+  border-bottom: 2px solid var(--color-dark-blue);
 }
 
 .contact {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 5px;
-    margin-right: 5px;
+  grid-row: 1 / 2;
+  grid-column: 3 / 4;
+  align-self: start;
+  justify-self: center;
+  display: grid;
+  grid-template-rows: 13rem;
+  grid-template-columns: repeat(4, minmax(min-content, 8rem));
+  column-gap: 1rem;
+  align-items: end;
+  justify-items: center;
+  margin-top: 3rem;
 
-    &:last-child{
-        margin-right: 10rem;
+  &__link:link,
+  &__link:visited {
+    text-decoration: none;
+    color: inherit;
+    display: grid;
+    grid-template-rows: 4rem min-content;
+    row-gap: 2rem;
+    padding: 2rem;
+    margin: 1rem;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    opacity: 0.8;
+    transition: all 0.3s;
+    background-color: #000;
+    .contact__icon {
+      opacity: 0.7;
+      transition: opacity 0.3s;
     }
+  }
 
-    @media only screen and (min-width: $mw-phone){
-        margin-left: 10rem;
-        margin-right: 10rem;
+  &__link:hover,
+  &__link:active {
+    opacity: 1;
+    .contact__icon {
+      opacity: 1;
     }
+  }
 
-    @media only screen and (min-width: $mw-tablet-p){
-        justify-content: space-around;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    @media only screen and (min-width: $mw-tablet-l){
-        justify-content: flex-end;
-        margin-right: 5rem;
-    }
-
-    &--link:link, &--link:visited,
-    &--link:hover, &--link:active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: var(--margin-small);
-        text-decoration: none;
-
-        &:not(:first-child){
-            margin-left: var(--margin-smallest);
+  // Adding animation on link 2 rotating lines
+  &__link {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    & span {
+      position: absolute;
+      &:nth-child(3) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(to right, #0c002b, var(--color-high-blue));
+        animation: animateBorder1 2s linear infinite;
+      }
+      &:nth-child(4) {
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background: linear-gradient(to top, #0c002b, var(--color-high-blue));
+        animation: animateBorder2 2s linear infinite;
+        animation-delay: 1s;
+      }
+      &:nth-child(5) {
+        top: 0;
+        right: 0;
+        width: 6px;
+        height: 100%;
+        background: linear-gradient(to bottom, #0c002b, var(--color-high-blue));
+        animation: animateBorder4 2s linear infinite;
+        animation-delay: 1s;
+      }
+      &:nth-child(6) {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(to left, #0c002b, var(--color-high-blue));
+        animation: animateBorder3 2s linear infinite;
+      }
+      @keyframes animateBorder1 {
+        0% {
+          transform: translateX(-100%);
         }
-
-        &:not(:last-child){
-            margin-right: var(--margin-smallest);
+        100% {
+          transform: translateX(100%);
         }
-    }
-
-    &--icon {
-        width: 3rem;
-        height: 3rem;
-    
-        &-phone {
-            fill: var(--color-f4);
+      }
+      @keyframes animateBorder2 {
+        0% {
+          transform: translateY(100%);
         }
-    }
-
-    &--text {
-        font-weight: var(--fw-strong);
-        font-size: var(--fs-strong);
-        color: var(--color-white);
-        padding-top: var(--padding-small);
-        text-align: center;
-
-        @media only screen and (min-width: $mw-tablet-p){
-            font-size: var(--fs-small);
+        100% {
+          transform: translateY(-100%);
         }
+      }
+      @keyframes animateBorder3 {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      @keyframes animateBorder4 {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
+      @media only screen and (max-width: 56.25em) {
+        &:nth-child(3) {
+          height: 3px;
+        }
+        &:nth-child(4) {
+          width: 3px;
+        }
+        &:nth-child(5) {
+          width: 3px;
+        }
+        &:nth-child(6) {
+          height: 3px;
+        }
+      }
     }
+  }
+
+  &__icon {
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+    z-index: 3;
+    &--phone {
+      fill: var(--color-f4);
+    }
+  }
+
+  &__text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-white);
+    text-align: center;
+    position: relative;
+    z-index: 3;
+  }
 }
 
 .logo {
-    width: 25rem;
-    height: 25rem;
-    position: absolute;
-    top: 3%;
-    left: 6%;
-    display: none;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  width: 25rem;
+  height: 25rem;
+  align-self: center;
+  justify-self: center;
 
-    @media only screen and (min-width: $mw-tablet-l){
-        display: block;
-    }
-
-    &--img {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-}    
-
+  &__img {
+    display: grid;
+    width: 100%;
+    height: 100%;
+  }
+}
 
 .showcase {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -70%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    &--logo {
-        width: 20rem;
-        height: 20rem;
-        opacity: 0.8;
-        
+  grid-row: 2 / 4;
+  grid-column: 1 / 4;
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  grid-template-rows: 15rem 8rem;
+  align-items: space-between;
+  row-gap: 3rem;
 
-        @media only screen and (min-width: $mw-phone){
-            width: 30rem;
-            height: 30rem;
-        }
+  &__logo {
+    width: 20rem;
+    height: 20rem;
+    opacity: 0.8;
+    display: none;
+  }
 
-        @media only screen and (min-width: $mw-tablet-l){
-            display: none;
-        }
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__text {
+    grid-row: 1 / 2;
+    text-align: center;
+    color: var(--color-white);
+    width: 40rem;
+
+    &--s:link,
+    &--s:visited {
+      font-size: 2.2rem;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: all 0.2s;
     }
 
-    &--img {
-        display: block;
-        width: 100%;
-        height: 100%;   
+    &--s:hover,
+    &--s:active {
+      opacity: 1;
+      transform: skewY(-5deg);
+      font-size: 101%;
+      display: inline-block;
     }
+  }
+
+  &__btn {
+    grid-row: 2 / 3;
+    position: relative;
+    display: grid;
+    grid-template-rows: 8rem;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 1rem;
+    grid-auto-rows: 0;
+    justify-content: center;
+    cursor: pointer;
+
+    text-decoration: none;
+    color: var(--color-white);
 
     &--text {
-        width: 30rem;
-        text-align: center;
-        margin-top: var(--margin-small);
-        color: var(--color-white);
-        font-weight: 200;
-        font-size: var(--fs-headlines);
+      grid-column: 1 / 2;
 
-        &-s:link, &-s:visited {
-            display: none;
-            font-size: var(--fs-bodytext);
-            text-decoration: none;
-            color: var(--color-white);
-            opacity: .7;
-            transition: all .3s;
-        }
-
-        @media only screen and (min-width: $mw-tablet-p){
-            // font-size: var(--fs-largest);
-            width: 40rem;
-
-            &-s:link, &-s:visited {
-                display: inline-block;
-            }
-            &-s:hover, &-s:active {
-                opacity: 1;
-                transform: skewY(-5deg);
-                font-size: 101%;
-            }
-        }
+      font-size: 1.5rem;
+      animation: blinking 2s infinite 0.5s;
     }
 
-    &--btn {
-        display: flex;
-        position: relative;
-
-        text-decoration: none;
-        color: var(--color-white);
-        margin-top: var(--margin-medium);
-
-        &-text {
-            font-size: var(--fs-small);
-
-            animation: blinking 2s infinite 0.5s;
-
-            @media only screen and (min-width: $mw-tablet-p){
-                // font-size: var(--fs-medium);
-            }
-        }
-
-        &-icon {
-            position: absolute;
-            top: -.3rem;
-            right: -1.7rem;
-            fill: currentColor;
-            width: 2rem;
-            height: 2rem;
-
-            animation: blinking 2s infinite 1.5s;
-
-            &2 {
-                z-index: 1;
-                top: 1rem;
-                right: -1.7rem;
-                animation: blinking 2s infinite 2s;
-            }
-
-            &3 {
-                top: 2.2rem;
-                right: -1.7rem;
-                animation: blinking 2s infinite 2.5s;
-            }
-            @media only screen and (min-width: $mw-tablet-p){
-                top: .5rem;
-                &2 { top: 1.5rem;}
-                &3 { top: 2.5rem;}
-            }
-        
-        }
+    &--lines {
+      grid-column: 2 / 3;
+      align-self: center;
+      display: grid;
+      grid-template-rows: repeat(3, max-content);
     }
 
+    &--icon {
+      fill: currentColor;
+      width: 2rem;
+      height: 2rem;
+      z-index: 10;
+
+      animation: blinking 2s infinite 1.5s;
+
+      &2 {
+        animation: blinking 2s infinite 2s;
+      }
+
+      &3 {
+        animation: blinking 2s infinite 2.5s;
+      }
+    }
+  }
+}
+// Larger than 1400
+@media only screen and (min-width: 87.5em) {
+  .contact {
+    justify-self: center;
+    column-gap: 3rem;
+  }
+  .logo {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+// Less than 1100
+@media only screen and (max-width: 68.75em) {
+  .first {
+    grid-template-columns: 30% 30% 40%;
+  }
+  .contact {
+    column-gap: 0;
+    &__icon {
+      align-self: center;
+      width: 4rem;
+      height: 4rem;
+    }
+    &__link:link,
+    &__link:visited {
+      row-gap: 1rem;
+      padding: 1rem;
+      grid-template-columns: auto;
+    }
+  }
+  .showcase {
+    grid-column: 1 / 4;
+  }
+}
+// Less than 900
+@media only screen and (max-width: 56.25em) {
+  .first {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+      ),
+      url(../img/hero-mobile.jpg);
+
+    grid-template-rows: 10rem calc(100vh - 10rem);
+  }
+  .logo {
+    display: none;
+  }
+  .contact {
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+    column-gap: 0;
+
+    grid-template-columns: repeat(4, minmax(min-content, 20rem));
+    justify-self: center;
+    justify-items: space-between;
+
+    &__link:link,
+    &__link:visited,
+    &__link:hover,
+    &__link:active {
+      opacity: 1;
+      .contact__icon {
+        opacity: 1;
+      }
+    }
+    &__link:link,
+    &__link:visited {
+      grid-template-columns: minmax(3rem, 6rem);
+    }
+  }
+  .showcase {
+    grid-row: 2 / 4;
+    grid-column: 1 / 4;
+    grid-template-rows: 20rem 15rem 8rem;
+    align-self: end;
+    justify-self: center;
+    margin-bottom: 1rem;
+    &__logo {
+      grid-row: 1 / 2;
+      display: grid;
+      align-self: start;
+      justify-self: center;
+    }
+    &__img {
+      display: block;
+    }
+    &__text {
+      grid-row: 2 / 3;
+      &--s:link,
+      &--s:visited,
+      &--s:hover,
+      &--s:active {
+        opacity: 1;
+        transform: skewY(0);
+        font-size: 100%;
+      }
+    }
+    &__btn {
+      grid-row: 3 / 4;
+    }
+  }
+}
+// Less than 400
+@media only screen and (max-width: 25em) {
+  .contact {
+    margin-top: 0;
+    &__link:link,
+    &__link:visited {
+      padding: 0.5rem;
+      margin: 0.5rem;
+    }
+    &__icon {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+  .showcase {
+    grid-template-rows: 20rem 10rem 8rem;
+    &__text {
+      width: 30rem;
+    }
+  }
 }
 
 @keyframes blinking {
-    0% { opacity: 1;}
-    50% { opacity: 0.2;}
-    100% { opacity: 1;}
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
