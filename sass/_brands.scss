@@ -1,68 +1,56 @@
-.clearfix {zoom: 1;}
-.clearfix:after {
-    content: '.';
-    clear: both;
-    display: block;
-    height: 0;
-    visibility: hidden;
-}
-
-.section-brands {
-    padding: 0;
+.brands {
+  display: grid;
+  grid-template-columns: repeat(7, 14%);
+  grid-template-rows: repeat(2, 10rem);
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-top: 3px solid var(--color-high-blue);
+  border-bottom: 3px solid var(--color-high-blue);
+  margin: 3rem 0;
+  overflow: hidden;
+  &__img {
     width: 100%;
-    background-color: var(--color-white);
-    border-top: 2px solid var(--color-light-grey);
-    border-bottom: 2px solid var(--color-light-grey);
-    box-shadow: 0 0 1rem var(--color-dark-blue);
-}
+    height: auto;
+    display: block;
+    opacity: 0.7;
+    transition: opacity 0.5s;
 
-.brands-showcase {
-    list-style: none;
-    width: 98%;
-    margin-left: 1%;
-
-    &--item {
-        display: block;
-        float: left;
-        width: 14%;
-        margin: 1rem 0;
+    &:hover {
+      opacity: 1;
     }
-
-    &--logo {
-        width: 100%;
-        margin: 0;
-        overflow: hidden;
+    &--scale7 {
+      transform: scale(0.7);
     }
-
-    &--img {
-        width: 100%;
-        height: 40px;
-        /* transform: scale(1.15); */
-        transition: /*transform 0.5s,*/ opacity 0.5s;
+    &--scale8 {
+      transform: scale(0.8);
     }
-
-    @media only screen and (min-width: $mw-tablet-p){
-        &--img {
-            height: 80px;
-        }
+    &--scale9 {
+      transform: scale(0.9);
     }
-
-    @media only screen and (min-width: $mw-tablet-l){
-
-        &--img {
-            opacity: 0.7;
-            height: 100px;
-        }
-        &--img:hover {
-            opacity: 1;
-        }
+    &--heightFix {
+      height: 99%;
     }
-}
-
-.scale6 {
-    transform: scale(.6);
-}
-
-.scale8 {
-    transform: scale(.8);
+  }
+  // Larger than 1400px
+  @media only screen and (min-width: 87.5em) {
+    grid-template-rows: repeat(2, 13rem);
+  }
+  // Less than 900px
+  @media only screen and (max-width: 56.25em) {
+    grid-template-rows: repeat(2, 8rem);
+    &__img {
+      opacity: 1;
+    }
+  }
+  // Less than 600px
+  @media only screen and (max-width: 37.5em) {
+    margin-top: 0;
+  }
+  // Less than 400px
+  @media only screen and (max-width: 25em) {
+    grid-template-rows: repeat(2, 6rem);
+    border-top: 1px solid var(--color-high-blue);
+    border-bottom: 1px solid var(--color-high-blue);
+  }
 }
